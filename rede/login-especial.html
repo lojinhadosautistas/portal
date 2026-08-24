@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Lojinha dos Autistas | Login VIP</title>
+  <meta name="description" content="A Lojinha dos Autistas é um hub de inovação social com base tecnológica que conecta propósito, desenvolvimento humano e transformação real." />
+
+  <!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
+  <meta property="og:title" content="Lojinha dos Autistas 💙 Tecnologia com Propósito" />
+  <meta property="og:description" content="Tecnologia aplicada ao desenvolvimento humano com foco na regulação emocional, autonomia e melhoria da qualidade de vida." />
+  <meta property="og:image" content="https://www.autistas.net/assets/img/img-share-autistas.jpg" />
+  <meta property="og:url" content="https://www.autistas.net/rede/login-especial.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter Card (melhora compatibilidade geral) -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Lojinha dos Autistas 💙 Tecnologia com Propósito" />
+  <meta name="twitter:description" content="Tecnologia aplicada ao desenvolvimento humano com foco na regulação emocional, autonomia e melhoria da qualidade de vida." />
+  <meta name="twitter:image" content="https://www.autistas.net/assets/img/img-share-autistas.jpg" />
+
+  <!-- Favicons -->
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+<link href="../assets/css/main.css" rel="stylesheet">
+<link href="../assets/css/login.css" rel="stylesheet">
+
+<style>
+  /* Correção de inputs no login */
+  #loginForm .form-control {
+    background-color: #ffffff;
+    color: #212529;
+  }
+  #loginForm .form-control::placeholder {
+    color: #6c757d;
+  }
+  #loginForm label {
+    color: #212529;
+  }
+
+
+/* Google login */
+.google-btn {
+  width: 100%;
+  height: 70px;
+  margin: 12px auto 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  background-color: #ffffff;
+  color: #3c4043;
+
+  border: none;
+  border-radius: 8px;
+
+  font-size: 21px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.google-btn:hover {
+  background-color: #f1f3f4;
+}
+
+.google-btn:focus {
+  outline: none;
+}
+
+.google-icon {
+  width: 25px;
+  height: 25px;
+}
+</style>
+
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+  
+</head>
+
+<body class="index-page login-page">
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+      <a href="../index.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">HOME</h1>
+        <span>.</span>
+      </a>
+
+    </div>
+  </header>
+  <!-- End Header -->
+
+  <main class="main">
+
+    <!-- ======= Login Section ======= -->
+    <section class="hero section dark-background">
+
+      <div class="container">
+        <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
+          <div class="col-lg-5 col-md-7">
+            <div class="card shadow">
+              <div class="card-body p-4">
+
+                <!-- Logo -->
+                <div class="text-center mb-4">
+                  <a href="https://www.instagram.com/lojinhadosautistas" target="_blank"><img src="../assets/img/logo-lojinha-p.png" alt="Sistema REDE" class="login-logo"></a>
+                </div>
+<h3 class="text-center mb-3 text-dark">  Acesso ao Sistema REDE</h3>
+<p class="text-center small mb-4 text-secondary"> Desenvolvido por autistas, para autistas.</p>
+
+                    <button id="googleLogin" type="button" class="google-btn">
+  <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" class="google-icon" />
+  <span>Entrar com Google</span>
+                    </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+    <!-- End Login Section -->
+
+  </main>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer dark-background">
+    <div class="container">
+      <h3 class="sitename">Lojinha dos Autistas</h3>
+      <p>Hub de inovação social com base tecnológica</p>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.instagram.com/lojinhadosautistas" target="_blank"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.youtube.com/channel/UCRW72C8GafilJKJT2_uwyYQ" target="_blank"><i class="bi bi-youtube"></i></a>
+      </div>
+    </div>
+  </footer>
+  <!-- End Footer -->
+
+
+  <!-- Vendor JS Files -->
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <!-- Main JS File -->
+  <!-- <script src="../assets/js/main.js"></script> -->
+
+
+  
+  <!-- Firebase Login -->
+  <script type="module" src="js/auth-login.js"></script>
+
+
+
+  <!-- Password reveal -->
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const passwordInput = document.getElementById("password");
+    const toggleBtn = document.querySelector(".password-toggle");
+    const icon = toggleBtn.querySelector("i");
+
+    toggleBtn.addEventListener("click", () => {
+      const isPassword = passwordInput.type === "password";
+
+      passwordInput.type = isPassword ? "text" : "password";
+
+      icon.classList.toggle("bi-eye");
+      icon.classList.toggle("bi-eye-slash");
+    });
+  });
+</script>
+
+
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+  import { 
+    getAuth, 
+    GoogleAuthProvider, 
+    signInWithPopup 
+  } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyC3jisbwoN9p0GJzAzfld3Y2l25ZtqIrEg",
+    authDomain: "sistema-rede.firebaseapp.com",
+    projectId: "sistema-rede",
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  const provider = new GoogleAuthProvider();
+
+  document.getElementById("googleLogin").addEventListener("click", async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+
+      console.log("Usuário logado:", user.email);
+
+      // redireciona após login
+      window.location.href = "hub.html";
+
+    } catch (error) {
+      console.error(error);
+      alert("Erro ao entrar com Google");
+    }
+  });
+</script>
+  
+</body>
+
+</html>

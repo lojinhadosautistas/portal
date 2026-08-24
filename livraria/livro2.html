@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>
+  Livro 2 • Sobrecarga e Camuflagem | Cada Passo, uma Jornada
+</title>
+
+<meta name="description" content="Volume 2 da coleção Cada Passo, uma Jornada — uma reflexão profunda sobre masking, exaustão emocional e sobrevivência no autismo adulto." />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Volume 2 • Sobrecarga e Camuflagem" />
+<meta property="og:description" content="Um livro sobre exaustão invisível, adaptação constante e o peso de existir tentando parecer normal." />
+<meta property="og:image" content="https://www.autistas.net/assets/img/img-share-autistas.jpg" />
+<meta property="og:url" content="https://www.autistas.net/livro2.html" />
+<meta property="og:type" content="website" />
+
+<!-- GOOGLE FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- AOS -->
+<link rel="stylesheet" href="../js/vendors/aos/aos.css">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Inter', sans-serif;
+
+  background:
+  linear-gradient(
+    to bottom,
+    rgba(247,242,238,.96),
+    rgba(236,228,220,.98)
+  ),
+
+  url('img/bg-col2.png');
+
+  background-size:cover;
+  background-attachment:fixed;
+
+  color:#24324a;
+
+  overflow-x:hidden;
+  position:relative;
+}
+
+a{
+  text-decoration:none;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+.container{
+  width:min(1240px, 92%);
+  margin:auto;
+  position:relative;
+  z-index:2;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+
+  background:
+
+  radial-gradient(
+    circle at top right,
+    rgba(144,112,182,.10),
+    transparent 30%
+  ),
+
+  radial-gradient(
+    circle at bottom left,
+    rgba(255,214,163,.16),
+    transparent 40%
+  );
+
+  z-index:-2;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+
+  background:
+  linear-gradient(
+    to bottom,
+    rgba(255,255,255,.12),
+    rgba(255,255,255,.04)
+  );
+
+  z-index:-1;
+}
+
+.ambient-glow{
+  position:fixed;
+  border-radius:50%;
+  filter:blur(120px);
+  pointer-events:none;
+  z-index:-1;
+  opacity:.25;
+}
+
+.glow-1{
+  width:420px;
+  height:420px;
+  background:#cdb4ea;
+  top:-120px;
+  right:-120px;
+}
+
+.glow-2{
+  width:320px;
+  height:320px;
+  background:#ffe9d2;
+  bottom:-120px;
+  left:-120px;
+}
+
+.book-hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding:120px 0 100px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:90px;
+  align-items:center;
+}
+
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+
+  padding:12px 22px;
+
+  border-radius:999px;
+
+  background:rgba(255,255,255,.68);
+
+  border:1px solid rgba(255,255,255,.85);
+
+  backdrop-filter:blur(14px);
+
+  font-size:.82rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+
+  color:#8f68b7;
+
+  margin-bottom:28px;
+
+  box-shadow:
+  0 10px 30px rgba(0,0,0,.05);
+}
+
+.hero-mini{
+  letter-spacing:4px;
+  text-transform:uppercase;
+
+  color:rgba(36,50,74,.55);
+
+  margin-bottom:24px;
+
+  font-size:.92rem;
+}
+
+.hero-title{
+  font-family:'Cormorant Garamond', serif;
+
+  font-size:clamp(4rem, 8vw, 8rem);
+
+  line-height:.88;
+  letter-spacing:-3px;
+
+  margin-bottom:34px;
+
+  color:#1f2f48;
+}
+
+.hero-text{
+  font-size:1.08rem;
+  line-height:2;
+
+  max-width:620px;
+
+  color:rgba(36,50,74,.78);
+
+  margin-bottom:22px;
+}
+
+.hero-actions{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+
+  margin-top:40px;
+}
+
+.btn-primary,
+.btn-secondary{
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:17px 32px;
+
+  border-radius:999px;
+
+  transition:.35s ease;
+
+  font-weight:600;
+}
+
+.btn-primary{
+  background:
+  linear-gradient(
+    135deg,
+    #8f68b7,
+    #6c4d8d
+  );
+
+  color:white;
+
+  box-shadow:
+  0 12px 35px rgba(143,104,183,.25);
+}
+
+.btn-primary:hover{
+  transform:translateY(-4px);
+}
+
+.btn-secondary{
+  background:rgba(255,255,255,.62);
+
+  border:
+  1px solid rgba(255,255,255,.9);
+
+  color:#24324a;
+
+  backdrop-filter:blur(14px);
+
+  box-shadow:
+  0 10px 30px rgba(0,0,0,.05);
+}
+
+.btn-secondary:hover{
+  background:white;
+}
+
+.hero-visual{
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.book-glow{
+  position:absolute;
+
+  width:460px;
+  height:460px;
+
+  border-radius:50%;
+
+  background:
+  radial-gradient(circle,
+  rgba(143,104,183,.18),
+  transparent 70%);
+
+  filter:blur(20px);
+}
+
+.floating-book{
+  position:relative;
+  width:min(100%, 430px);
+
+  animation:floatBook 7s ease-in-out infinite;
+}
+
+.floating-book img{
+  border-radius:24px;
+
+  box-shadow:
+  0 25px 70px rgba(0,0,0,.16);
+}
+
+.quote-section{
+  padding:40px 0 140px;
+}
+
+.quote-box{
+  position:relative;
+
+  padding:100px 70px;
+
+  border-radius:42px;
+
+  background:
+  rgba(255,255,255,.62);
+
+  border:
+  1px solid rgba(255,255,255,.85);
+
+  backdrop-filter:blur(20px);
+
+  overflow:hidden;
+
+  text-align:center;
+
+  box-shadow:
+  0 20px 60px rgba(0,0,0,.06);
+}
+
+.quote-mark{
+  position:absolute;
+
+  top:-10px;
+  left:40px;
+
+  font-size:12rem;
+
+  opacity:.05;
+
+  font-family:serif;
+
+  color:#8f68b7;
+}
+
+.quote-box h2{
+  font-family:'Cormorant Garamond', serif;
+
+  font-size:clamp(2.3rem, 5vw, 4.8rem);
+
+  line-height:1.2;
+
+  color:#1f2f48;
+}
+
+section{
+  position:relative;
+}
+
+.section-space{
+  padding:140px 0;
+}
+
+.section-header{
+  max-width:860px;
+  margin:0 auto 90px;
+  text-align:center;
+}
+
+.section-tag{
+  display:inline-block;
+
+  margin-bottom:18px;
+
+  color:#8f68b7;
+
+  letter-spacing:3px;
+  text-transform:uppercase;
+
+  font-size:.85rem;
+}
+
+.section-header h2{
+  font-family:'Cormorant Garamond', serif;
+
+  font-size:clamp(2.8rem,5vw,5rem);
+
+  line-height:1;
+
+  margin-bottom:24px;
+
+  color:#1f2f48;
+}
+
+.section-header p{
+  font-size:1.05rem;
+  line-height:2;
+
+  color:rgba(36,50,74,.72);
+}
+
+.immersive-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+}
+
+.immersive-card{
+  position:relative;
+
+  padding:42px;
+
+  border-radius:30px;
+
+  background:
+  rgba(255,255,255,.72);
+
+  border:
+  1px solid rgba(255,255,255,.9);
+
+  backdrop-filter:blur(18px);
+
+  transition:.4s ease;
+
+  box-shadow:
+  0 15px 40px rgba(0,0,0,.05);
+}
+
+.immersive-card:hover{
+  transform:translateY(-10px);
+}
+
+.immersive-number{
+  font-size:4rem;
+  font-family:'Cormorant Garamond', serif;
+
+  opacity:.08;
+
+  margin-bottom:18px;
+
+  color:#8f68b7;
+}
+
+.immersive-card h3{
+  font-family:'Cormorant Garamond', serif;
+
+  font-size:1.7rem;
+
+  margin-bottom:18px;
+
+  color:#1f2f48;
+}
+
+.immersive-card p{
+  line-height:1.9;
+
+  color:rgba(36,50,74,.74);
+}
+
+.journey-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:90px;
+  align-items:start;
+}
+
+.journey-content h2{
+  font-family:'Cormorant Garamond', serif;
+
+  font-size:clamp(2.8rem,5vw,5rem);
+
+  line-height:1;
+
+  margin-bottom:24px;
+
+  color:#1f2f48;
+}
+
+.journey-content p{
+  line-height:2;
+  color:rgba(36,50,74,.72);
+}
+
+.timeline-item{
+  display:flex;
+  gap:24px;
+
+  margin-bottom:50px;
+}
+
+.timeline-dot{
+  width:14px;
+  height:14px;
+
+  border-radius:50%;
+
+  background:#8f68b7;
+
+  margin-top:10px;
+
+  flex-shrink:0;
+}
+
+.timeline-item h3{
+  font-family:'Cormorant Garamond', serif;
+
+  font-size:1.5rem;
+
+  margin-bottom:12px;
+
+  color:#1f2f48;
+}
+
+.timeline-item p{
+  line-height:1.9;
+  color:rgba(36,50,74,.72);
+}
+
+.final-section{
+  padding:120px 0 160px;
+}
+
+.final-box{
+  position:relative;
+
+  padding:100px 70px;
+
+  border-radius:42px;
+
+  background:
+  rgba(255,255,255,.72);
+
+  border:
+  1px solid rgba(255,255,255,.9);
+
+  backdrop-filter:blur(20px);
+
+  overflow:hidden;
+
+  text-align:center;
+
+  box-shadow:
+  0 20px 60px rgba(0,0,0,.06);
+}
+
+.final-mini{
+  color:#8f68b7;
+
+  letter-spacing:4px;
+  text-transform:uppercase;
+
+  margin-bottom:18px;
+}
+
+.final-box h2{
+  font-family:'Cormorant Garamond', serif;
+
+  font-size:clamp(2.8rem,5vw,5rem);
+
+  line-height:1;
+
+  margin-bottom:28px;
+
+  color:#1f2f48;
+}
+
+.final-box p{
+  max-width:760px;
+  margin:auto;
+
+  line-height:2;
+
+  color:rgba(36,50,74,.72);
+}
+
+.final-actions{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  flex-wrap:wrap;
+
+  margin-top:42px;
+}
+
+footer{
+  padding:40px 0 70px;
+
+  text-align:center;
+}
+
+footer p{
+  color:rgba(36,50,74,.45);
+
+  line-height:1.8;
+}
+
+@keyframes floatBook{
+
+  0%{
+    transform:translateY(0px);
+  }
+
+  50%{
+    transform:translateY(-16px);
+  }
+
+  100%{
+    transform:translateY(0px);
+  }
+
+}
+
+@media(max-width:992px){
+
+  .hero-grid,
+  .journey-grid,
+  .immersive-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero-visual{
+    order:-1;
+  }
+
+  .floating-book{
+    max-width:320px;
+  }
+
+}
+
+@media(max-width:768px){
+
+  .book-hero{
+    padding-top:120px;
+  }
+
+  .hero-title{
+    font-size:3.5rem;
+    letter-spacing:-2px;
+  }
+
+  .hero-actions,
+  .final-actions{
+    flex-direction:column;
+  }
+
+  .btn-primary,
+  .btn-secondary{
+    width:100%;
+  }
+
+  .quote-box,
+  .final-box{
+    padding:70px 30px;
+  }
+
+  .quote-box h2,
+  .final-box h2,
+  .journey-content h2,
+  .section-header h2{
+    font-size:2.5rem;
+  }
+
+  .immersive-card{
+    padding:34px;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="ambient-glow glow-1"></div>
+<div class="ambient-glow glow-2"></div>
+
+<section class="book-hero">
+
+  <div class="container">
+
+    <div class="hero-grid">
+
+      <div class="hero-content" data-aos="fade-right">
+
+        <div class="hero-badge">
+          Coleção 1 • Volume 2
+        </div>
+
+        <div class="hero-mini">
+          Cada Passo, uma Jornada
+        </div>
+
+        <h1 class="hero-title">
+          Sobrecarga<br>
+          e Camuflagem<br>
+          no Autismo<br>
+          Adulto
+        </h1>
+
+        <p class="hero-text">
+          Algumas pessoas chamam de adaptação.
+          Outras chamam de maturidade.
+        </p>
+
+        <p class="hero-text">
+          Mas viver escondendo desconfortos,
+          mascarando sinais e tentando parecer funcional
+          também cobra um preço emocional profundo.
+        </p>
+
+        <div class="hero-actions">
+
+          <a href="#imersao" class="btn-primary">
+            Entrar na experiência
+          </a>
+
+          <a href="#" class="btn-secondary" target="_blank">
+            Adquirir o livro
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="hero-visual" data-aos="zoom-in" data-aos-delay="200">
+
+        <div class="book-glow"></div>
+
+        <div class="floating-book">
+          <img src="img/livro2.png" alt="Livro Volume 2">
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="quote-section">
+
+  <div class="container">
+
+    <div class="quote-box" data-aos="fade-up">
+
+      <span class="quote-mark">“</span>
+
+      <h2>
+        Sobreviver tentando parecer normal
+        também pode ser uma forma de exaustão.
+      </h2>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="imersao" class="section-space">
+
+  <div class="container">
+
+    <div class="section-header" data-aos="fade-up">
+
+      <div class="section-tag">
+        EXPERIÊNCIA
+      </div>
+
+      <h2>
+        Este livro não fala apenas sobre adaptação.
+      </h2>
+
+      <p>
+        Ele fala sobre o peso invisível de sustentar
+        personagens para sobreviver socialmente.
+      </p>
+
+    </div>
+
+    <div class="immersive-grid">
+
+      <div class="immersive-card" data-aos="fade-up">
+
+        <div class="immersive-number">
+          01
+        </div>
+
+        <h3>
+          O masking constante
+        </h3>
+
+        <p>
+          Ajustar expressões, tom de voz,
+          comportamento e reações pode gerar
+          desgaste emocional acumulativo.
+        </p>
+
+      </div>
+
+      <div class="immersive-card" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="immersive-number">
+          02
+        </div>
+
+        <h3>
+          Exaustão invisível
+        </h3>
+
+        <p>
+          Muitas vezes o corpo continua funcionando,
+          mesmo quando a mente já está no limite.
+        </p>
+
+      </div>
+
+      <div class="immersive-card" data-aos="fade-up" data-aos-delay="200">
+
+        <div class="immersive-number">
+          03
+        </div>
+
+        <h3>
+          Reconstrução possível
+        </h3>
+
+        <p>
+          O foco não é abandonar toda adaptação,
+          mas encontrar maneiras mais humanas
+          de existir sem se apagar.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="section-space">
+
+  <div class="container">
+
+    <div class="journey-grid">
+
+      <div class="journey-content" data-aos="fade-right">
+
+        <div class="section-tag">
+          A JORNADA
+        </div>
+
+        <h2>
+          Uma leitura construída para acolher o invisível.
+        </h2>
+
+        <p>
+          O livro percorre masking, burnout autista,
+          sobrecarga social, exaustão emocional
+          e identidade.
+        </p>
+
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline-item" data-aos="fade-left">
+
+          <div class="timeline-dot"></div>
+
+          <div>
+
+            <h3>
+              Aprendendo a sobreviver
+            </h3>
+
+            <p>
+              As adaptações invisíveis desenvolvidas
+              ao longo da vida.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="timeline-item" data-aos="fade-left" data-aos-delay="100">
+
+          <div class="timeline-dot"></div>
+
+          <div>
+
+            <h3>
+              O custo da camuflagem
+            </h3>
+
+            <p>
+              O impacto emocional de viver
+              constantemente em alerta.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="timeline-item" data-aos="fade-left" data-aos-delay="200">
+
+          <div class="timeline-dot"></div>
+
+          <div>
+
+            <h3>
+              Burnout e exaustão
+            </h3>
+
+            <p>
+              Quando o esforço contínuo deixa
+              de ser sustentável.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="timeline-item" data-aos="fade-left" data-aos-delay="300">
+
+          <div class="timeline-dot"></div>
+
+          <div>
+
+            <h3>
+              Reconstruindo autenticidade
+            </h3>
+
+            <p>
+              Menos personagens.
+              Mais presença.
+              Mais verdade.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="final-section">
+
+  <div class="container">
+
+    <div class="final-box" data-aos="zoom-in">
+
+      <div class="final-mini">
+        Volume 2
+      </div>
+
+      <h2>
+        Você não precisa parecer bem
+        o tempo inteiro.
+      </h2>
+
+      <p>
+        Às vezes, o começo da cura acontece
+        quando finalmente paramos de esconder o cansaço.
+      </p>
+
+      <div class="final-actions">
+
+        <a href="https://loja.uiclap.com/titulo/ua164064" class="btn-primary" target="_blank">
+          Comprar edição física
+        </a>
+
+        <a href="livraria.html" class="btn-secondary">
+          Voltar à livraria
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+
+  <div class="container">
+
+    <p>
+      Cada Passo, uma Jornada • Coleção 1 • Volume 2
+    </p>
+
+  </div>
+
+</footer>
+
+<script src="../js/vendors/aos/aos.js"></script>
+
+<script>
+
+AOS.init({
+  duration:1200,
+  once:true
+});
+
+</script>
+
+</body>
+</html>
+```

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CCV • Mapa Cognitivo Vivo</title>
+
+<style>
+body{
+  margin:0;
+  overflow:hidden;
+  background:#050816;
+  font-family:Inter, sans-serif;
+}
+
+canvas{
+  display:block;
+}
+
+.hud{
+  position:fixed;
+  top:16px;
+  left:16px;
+  width:320px;
+  padding:14px;
+  border-radius:12px;
+  background:rgba(0,0,0,.45);
+  backdrop-filter:blur(12px);
+  color:white;
+  font-size:13px;
+  line-height:1.4;
+}
+
+.small{opacity:.7;margin-top:6px;}
+</style>
+</head>
+
+<body>
+
+<canvas id="c"></canvas>
+
+<div class="hud">
+  <div><b>CCV • MAPA COGNITIVO</b></div>
+
+  <div class="small">clusters:</div>
+  <div id="clusters">0</div>
+
+  <div class="small">centros ativos:</div>
+  <div id="centers"></div>
+
+</div>
+
+<script>
+
+//////////////////////////////////////////////////////
+// 🧠 CANVAS
+//////////////////////////////////////////////////////
+
+const canvas = document.getElementById("c");
+const ctx = canvas.getContext("2d");
+
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+window.addEventListener("resize", ()=>{
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+});
+
+//////////////////////////////////////////////////////
+// 🧠 NÓS SEMÂNTICOS
+//////////////////////////////////////////////////////
+
+const tags = [
+  "incerteza","decisão","estrutura","fluxo","caos",
+  "ordem","ansiedade","clareza","ruído","silêncio",
+  "memória","foco","dispersão","conflito","integração"
+];
+
+const nodes = tags.map(t => ({
+  x:Math.random()*innerWidth,
+  y:Math.random()*innerHeight,
+  vx:0,
+  vy:0,
+  label:t
+}));
+
+//////////////////////////////////////////////////////
+// 🧠 GRUPOS
+//////////////////////////////////////////////////////
+
+function group(t){
+
+  const g = {
+    caos:["caos","ruído","ansiedade","conflito"],
+    ordem:["ordem","estrutura","clareza"],
+    fluxo:["fluxo","movimento","integração"],
+    introspectivo:["memória","silêncio"],
+    cognitivo:["decisão","foco"]
+  };
+
+  for(let k in g){
+    if(g[k].includes(t)) return k;
+  }
+
+  return "neutro";
+}
+
+//////////////////////////////////////////////////////
+// 🧠 CLUSTERS
+//////////////////////////////////////////////////////
+
+function clusters(){
+
+  const visited = new Array(nodes.length).fill(false);
+  const out = [];
+
+  function dfs(i,c){
+
+    visited[i]=true;
+    c.push(nodes[i]);
+
+    for(let j=0;j<nodes.length;j++){
+
+      if(visited[j]) continue;
+
+      const dx = nodes[i].x - nodes[j].x;
+      const dy = nodes[i].y - nodes[j].y;
+      const d = Math.sqrt(dx*dx+dy*dy);
+
+      if(d<90) dfs(j,c);
+
+    }
+
+  }
+
+  for(let i=0;i<nodes.length;i++){
+    if(!visited[i]){
+      const c=[];
+      dfs(i,c);
+      out.push(c);
+    }
+  }
+
+  return out;
+
+}
+
+//////////////////////////////////////////////////////
+// 🧠 CENTRO DE MASSA
+//////////////////////////////////////////////////////
+
+function center(cluster){
+
+  let x=0,y=0;
+
+  for(let n of cluster){
+    x+=n.x;
+    y+=n.y;
+  }
+
+  return {
+    x:x/cluster.length,
+    y:y/cluster.length,
+    g: group(cluster[0].label)
+  };
+
+}
+
+//////////////////////////////////////////////////////
+// 🧠 FÍSICA
+//////////////////////////////////////////////////////
+
+function update(){
+
+  const cs = clusters();
+
+  for(let i=0;i<nodes.length;i++){
+
+    let a = nodes[i];
+
+    let fx=0, fy=0;
+
+    for(let j=0;j<nodes.length;j++){
+
+      if(i===j) continue;
+
+      let b = nodes[j];
+
+      const dx = b.x - a.x;
+      const dy = b.y - a.y;
+      const d = Math.sqrt(dx*dx+dy*dy)+0.1;
+
+      const f = (group(a.label)===group(b.label)) ? 0.7 : 0.03;
+
+      fx += (dx/d)*f;
+      fy += (dy/d)*f;
+
+    }
+
+    a.vx += fx*0.02;
+    a.vy += fy*0.02;
+
+    a.vx *= 0.9;
+    a.vy *= 0.9;
+
+    a.x += a.vx;
+    a.y += a.vy;
+
+  }
+
+  draw(cs);
+
+}
+
+//////////////////////////////////////////////////////
+// 🧠 DRAW MAPA COGNITIVO
+//////////////////////////////////////////////////////
+
+function draw(cs){
+
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  //////////////////////////////////////////////////////
+  // linhas
+  //////////////////////////////////////////////////////
+
+  for(let i=0;i<nodes.length;i++){
+
+    for(let j=i+1;j<nodes.length;j++){
+
+      const a=nodes[i], b=nodes[j];
+
+      const dx=a.x-b.x;
+      const dy=a.y-b.y;
+      const d=Math.sqrt(dx*dx+dy*dy);
+
+      if(d<120){
+
+        ctx.strokeStyle=`rgba(255,255,255,${1-d/120})`;
+        ctx.lineWidth=0.5;
+
+        ctx.beginPath();
+        ctx.moveTo(a.x,a.y);
+        ctx.lineTo(b.x,b.y);
+        ctx.stroke();
+
+      }
+
+    }
+
+  }
+
+  //////////////////////////////////////////////////////
+  // nós
+  //////////////////////////////////////////////////////
+
+  for(let n of nodes){
+
+    ctx.fillStyle = colorByGroup(group(n.label));
+
+    ctx.beginPath();
+    ctx.arc(n.x,n.y,5,0,Math.PI*2);
+    ctx.fill();
+
+  }
+
+  //////////////////////////////////////////////////////
+  // centros de cluster
+  //////////////////////////////////////////////////////
+
+  const centers = cs.map(center);
+
+  document.getElementById("clusters").innerText = cs.length;
+
+  document.getElementById("centers").innerHTML =
+    centers.map(c=>`<div>${c.g}</div>`).join("");
+
+  for(let c of centers){
+
+    ctx.fillStyle = "#ffb300";
+
+    ctx.beginPath();
+    ctx.arc(c.x,c.y,10,0,Math.PI*2);
+    ctx.fill();
+
+  }
+
+}
+
+//////////////////////////////////////////////////////
+// 🧠 CORES SEMÂNTICAS
+//////////////////////////////////////////////////////
+
+function colorByGroup(g){
+
+  const map = {
+    caos:"#ff3b3b",
+    ordem:"#3bff8a",
+    fluxo:"#3bb7ff",
+    introspectivo:"#b13bff",
+    cognitivo:"#ffd43b",
+    neutro:"#ffffff"
+  };
+
+  return map[g] || "#ffffff";
+
+}
+
+//////////////////////////////////////////////////////
+// 🧠 LOOP
+//////////////////////////////////////////////////////
+
+function loop(){
+
+  update();
+  requestAnimationFrame(loop);
+
+}
+
+loop();
+
+</script>
+
+</body>
+</html>

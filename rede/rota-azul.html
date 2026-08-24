@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Lojinha dos Autistas | Laboratório de Cinema Rota Azul</title>
+  <meta name="description" content="Espaço de experimentação artística, inclusão e desenvolvimento humano através do cinema." />
+
+  <!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
+  <meta property="og:title" content="Lojinha dos Autistas 💙 Laboratório de Cinema Rota Azul" />
+  <meta property="og:description" content="Espaço de experimentação artística, inclusão e desenvolvimento humano através do cinema." />
+  <meta property="og:image" content="https://www.autistas.net/assets/img/img-share-autistas.jpg" />
+  <meta property="og:url" content="https://www.autistas.net/rede/rota-azul.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter Card (melhora compatibilidade geral) -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Lojinha dos Autistas 💙 Laboratório de Cinema Rota Azul" />
+  <meta name="twitter:description" content="Espaço de experimentação artística, inclusão e desenvolvimento humano através do cinema." />
+  <meta name="twitter:image" content="https://www.autistas.net/assets/img/img-share-autistas.jpg" />
+
+<link href="../assets/img/favicon.png" rel="icon">
+
+<link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="../assets/css/hub.css" rel="stylesheet">
+
+<style>
+
+/* =========================
+   SKIP LINK
+========================= */
+.skip-link{
+  position:absolute;
+  left:-999px;
+}
+
+.skip-link:focus{
+  left:12px;
+  top:12px;
+  background:#000;
+  color:#fff;
+  padding:6px 10px;
+  border-radius:6px;
+  z-index:9999;
+}
+
+/* =========================
+   BREADCRUMB MINI
+========================= */
+.breadcrumb-mini ol{
+  list-style:none;
+  padding:0;
+  margin:0 0 14px 0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  font-size:.85rem;
+}
+
+.breadcrumb-mini li::after{
+  content:"›";
+  margin-left:6px;
+}
+
+.breadcrumb-mini li:last-child::after{
+  content:"";
+}
+
+/* =========================
+   CARD
+========================= */
+.rota-card{
+  background:#fff;
+  border-radius:16px;
+  padding:22px;
+  margin-bottom:22px;
+  box-shadow:0 10px 26px rgba(0,0,0,0.05);
+}
+
+/* =========================
+   GALERIA
+========================= */
+.galeria{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:16px;
+}
+
+.cartaz{
+  display:block;
+  background:#fff;
+  border-radius:14px;
+  padding:8px;
+  text-decoration:none;
+  color:inherit;
+  box-shadow:0 6px 16px rgba(0,0,0,0.05);
+  transition:.2s;
+}
+
+.cartaz:hover{
+  transform:translateY(-2px);
+}
+
+.cartaz img{
+  width:100%;
+  border-radius:10px;
+}
+
+.cartaz span{
+  display:block;
+  margin-top:6px;
+  font-size:.8rem;
+  font-weight:500;
+}
+
+/* =========================
+   CALENDÁRIO
+========================= */
+.calendar-wrapper{
+  position:relative;
+  padding-bottom:100%;
+  height:0;
+  overflow:hidden;
+  border-radius:14px;
+}
+
+.calendar-wrapper iframe{
+  position:absolute;
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+/* =========================
+   FOCO
+========================= */
+a:focus-visible{
+  outline:3px solid var(--primary);
+  outline-offset:2px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="header-container"></div>
+<div id="sidebar-container"></div>
+
+<a href="#conteudo" class="skip-link">Ir para conteúdo principal</a>
+
+<main id="conteudo" class="main">
+
+<!-- PAGE TITLE PADRÃO REDE -->
+<div class="page-title mb-4">
+  <h1>Laboratório de Cinema Rota Azul</h1>
+  <p>Espaço de experimentação artística, inclusão e desenvolvimento humano através do cinema</p>
+</div>
+
+<!-- BREADCRUMB 
+<nav class="breadcrumb-mini" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="hub.html">Hub</a></li>
+    <li aria-current="page">Rota Azul</li>
+  </ol>
+</nav>-->
+
+<!-- APRESENTAÇÃO -->
+<section class="rota-card">
+
+<p>
+Mais do que um projeto de cinema, o <strong>Laboratório de Cinema Rota Azul</strong> constitui um espaço de criatividade,
+socialização e desenvolvimento humano, onde a arte se transforma em ferramenta de expressão, autonomia e protagonismo.
+</p>
+
+<p>Neste contexto, o Projeto <strong>Cinema na Varanda</strong> promove experimentação audiovisual integrando cinema, roteirização, curadoria audiovisual e práticas de arteterapia.
+</p>
+
+</section>
+
+<!-- GALERIA PRÓXIMAS -->
+<section class="rota-card">
+
+<h2 class="h5 mb-3">Cinema na Varanda — Próximas Exibições</h2>
+
+<div class="galeria">
+
+
+<!--  
+<a class="cartaz"
+href="https://drive.google.com/file/d/XXX/preview"
+target="_blank"
+rel="noopener"
+aria-label="Abrir cartaz Cinema na Varanda número 8, 22 de agosto de 2026">
+
+<img src="https://drive.google.com/thumbnail?id=XXX&sz=w400" alt="">
+<span><b>Cinema na Varanda #8 — 22.08.2026</b></span>
+</a>
+-->
+  
+<a class="cartaz"
+href="https://drive.google.com/file/d/1gBq1AN7R_oR_87rmvueqwN1raLTG-GbC/preview"
+target="_blank"
+rel="noopener"
+aria-label="Abrir cartaz Cinema na Varanda número 7, 25 de julho de 2026">
+
+<img src="https://drive.google.com/thumbnail?id=1gBq1AN7R_oR_87rmvueqwN1raLTG-GbC&sz=w400" alt="">
+<span><b>Cinema na Varanda #7 — 25.07.2026</b></span>
+</a>
+  
+<a class="cartaz"
+href="https://drive.google.com/file/d/1iNa9bIumIR7VmFWFxgGNUcnj8jvFpM7f/preview"
+target="_blank"
+rel="noopener"
+aria-label="Abrir cartaz Cinema na Varanda número 6, 20 de junho de 2026">
+
+<img src="https://drive.google.com/thumbnail?id=1iNa9bIumIR7VmFWFxgGNUcnj8jvFpM7f&sz=w400" alt="">
+<span><b>Cinema na Varanda #6 — 20.06.2026</b></span>
+</a>
+
+  
+<!--<a class="cartaz"
+href="https://drive.google.com/file/d/14dxuipYKwVRXhAbqyJ-Vq8fXETUAbuxJ/preview"
+target="_blank"
+rel="noopener"
+aria-label="Abrir cartaz Cinema na Varanda número 5, 23 de maio de 2026">
+
+<img src="https://drive.google.com/thumbnail?id=14dxuipYKwVRXhAbqyJ-Vq8fXETUAbuxJ&sz=w400" alt="">
+<span><b>Cinema na Varanda #5 — 23.05.2026</b></span>
+</a>-->
+
+
+  
+
+</div>
+
+</section>
+
+   <!-- GALERIA REALIZADAS -->
+<section class="rota-card">
+
+<h2 class="h5 mb-3">Cinema na Varanda — Últimas Exibições </h2>
+
+<div class="galeria">
+
+<a class="cartaz"
+href="https://drive.google.com/file/d/14msURyZUQEzWKHjLNubno6it1pzxdXuO/preview"
+target="_blank"
+rel="noopener"
+aria-label="Abrir cartaz Cinema na Varanda número 4, 18 de abril de 2026">
+
+<img src="https://drive.google.com/thumbnail?id=14msURyZUQEzWKHjLNubno6it1pzxdXuO&sz=w400" alt="">
+<span><b>Cinema na Varanda #4 — 18.04.2026</b></span>
+</a>
+  
+<a class="cartaz"
+href="https://drive.google.com/file/d/110quo4bzM60aCqpxk1bmiiP8fr6-Yce8/preview"
+target="_blank"
+rel="noopener"
+aria-label="Abrir cartaz Cinema na Varanda número 3, 22 de março de 2026">
+
+<img src="https://drive.google.com/thumbnail?id=110quo4bzM60aCqpxk1bmiiP8fr6-Yce8&sz=w400" alt="">
+<span><b>Cinema na Varanda #3 — 22.03.2026</b></span>
+</a>
+  
+<a class="cartaz"
+href="https://drive.google.com/file/d/1YqzTPrbpHuejbOyZ3zt4VqVl0wTAX3S6/preview"
+target="_blank"
+rel="noopener"
+aria-label="Abrir cartaz Cinema na Varanda número 2, 16 de fevereiro de 2026">
+
+<img src="https://drive.google.com/thumbnail?id=1YqzTPrbpHuejbOyZ3zt4VqVl0wTAX3S6&sz=w400" alt="">
+<span><b>Cinema na Varanda #2 — 16.02.2026 (Edição de Carnaval)</b></span>
+</a>
+
+<a class="cartaz"
+href="https://drive.google.com/file/d/1ASL95_YpZmitpcnw6JU6fwTid2xADpao/preview"
+target="_blank"
+rel="noopener"
+aria-label="Abrir cartaz Cinema na Varanda número 1, 16 de fevereiro de 2026">
+
+<img src="https://drive.google.com/thumbnail?id=1ASL95_YpZmitpcnw6JU6fwTid2xADpao&sz=w400" alt="">
+<span><b>Cinema na Varanda #1 — 09.01.2026</b></span>
+</a>
+</div>
+
+</section>
+<br><hr><br><br>
+  <div class="text-start mb-4">  <a class="btn btn-primary btn-sm px-4"><i class="bi bi-collection"></i> Facilitador  </a></div>
+<!--
+<p>Cinema na Varanda #8 — 22.08.2026: 
+  <a href="https://www.youtube.com/watch?v=" target="_blank"><span><b>/b></span></a> | 
+  <a href="https://www.youtube.com/watch?v=" target="_blank"><span><b></b></span></a>
+</p>-->
+  
+<p>Cinema na Varanda #7 — 25.07.2026: 
+  <a href="https://www.youtube.com/watch?v=3tDJQ4FUvz0" target="_blank"><span><b>Laika & Nemo/b></span></a> | 
+  <a href="https://www.youtube.com/watch?v=3yq01ulHXRI" target="_blank"><span><b>Outdoors</b></span></a>
+</p>
+  
+<p>Cinema na Varanda #6 — 20.06.2026: 
+  <a href="https://www.youtube.com/watch?v=WjoDEQqyTig" target="_blank"><span><b>For the Birds</b></span></a> | 
+  <a href="https://www.youtube.com/watch?v=ogltNOF91oo" target="_blank"><span><b>Agir pela Emoção</b></span></a>
+</p>
+  
+<!--<p>Cinema na Varanda #5 — 23.05.2026: 
+  <a href="https://www.youtube.com/watch?v=5L4DQfVIcdg" target="_blank"><span><b>Coin Operated</b></span></a> | 
+  <a href="https://www.youtube.com/watch?v=20evunLzSgk" target="_blank"><span><b>The Box</b></span></a>
+</p>-->
+  
+<p>Cinema na Varanda #4 — 18.04.2026: 
+  <a href="https://www.youtube.com/watch?v=7V7MOk0FZrg" target="_blank"><span><b>Carrot Crazy</b></span></a> | 
+  <a href="https://www.youtube.com/watch?v=JkMCMlVdUT8" target="_blank"><span><b>Ice Pepper</b></span></a>
+</p>
+
+<p>Cinema na Varanda #3 — 22.03.2026: 
+  <a href="https://www.youtube.com/watch?v=m8q8M50cF5E" target="_blank"><span><b>Piper</b></span></a> | 
+  <a href="https://www.youtube.com/watch?v=07d2dXHYb94" target="_blank"><span><b>Pip</b></span></a>
+</p>
+  
+<p>Cinema na Varanda #2 — 16.02.2026: 
+  <a href="https://www.youtube.com/watch?v=d-lMflQsN9M" target="_blank"><span><b>Boom</b></span></a> | 
+  <a href="https://www.youtube.com/watch?v=9eg-tXpYluE" target="_blank"><span><b>Quack!</b></span></a>
+</p>
+
+<p>Cinema na Varanda #1 — 09.01.2026: 
+  <a href="https://www.youtube.com/watch?v=O3xl-o0JMA8" target="_blank"><span><b>Make Joy Happen</b></span></a> | 
+  <a href="https://www.youtube.com/watch?v=MIfOGMdZhe8" target="_blank"><span><b>Swing to the Moon</b></span></a>
+</p>
+  
+</main>
+
+<script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script type="module" src="js/hub.js"></script>
+<script src="js/components.js"></script>
+
+</body>
+</html>

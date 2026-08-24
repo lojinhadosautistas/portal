@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>ATLAS | Sistema REDE</title>
+
+  <base href="../">
+
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/hub.css">
+  <link rel="stylesheet" href="atlas/css/atlasv3.css">
+</head>
+
+<body>
+
+<div id="header-container"></div>
+<div id="sidebar-container"></div>
+
+<main class="main">
+
+  <div class="page-title mb-4">
+    <h1>ATLAS</h1>
+    <p><strong>Ambiente de Topologia Lúdica para Aprendizagem Sistêmica</strong></p>
+  </div>
+
+  <div class="module-card">
+
+    <div id="atlas-container">
+
+      <canvas id="mapCanvas"></canvas>
+
+      <!-- MINI MAP -->
+      <canvas id="miniMap"></canvas>
+
+      <!-- FRAGMENT VIEW -->
+      <div id="fragment-view"></div>
+
+    </div>
+
+  </div>
+
+</main>
+
+<script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="js/components.js"></script>
+<script src="atlas/js/atlasv3.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Mapa da Nossa Mente | Lojinha dos Autistas</title>
+
+<meta name="description" content="Mapa interativo das regiões do cérebro e sua relação com o autismo."/>
+
+<link href="../assets/img/favicon.png" rel="icon">
+
+<link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+
+<style>
+
+body{
+  font-family:'Inter',sans-serif;
+  background:#f5f7fb;
+}
+
+/* CARDS */
+.cardx{
+  background:white;
+  border-radius:14px;
+  padding:18px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.06);
+}
+
+/* LISTA */
+.region-item{
+  padding:10px;
+  border-radius:10px;
+  cursor:pointer;
+}
+.region-item:hover{ background:#eef2ff; }
+.region-active{ background:#dbeafe; }
+
+/* CÉREBRO */
+.brain-container{ text-align:center; position:relative; }
+
+.brain-img{
+  width:100%;
+  max-width:520px;
+}
+
+/* NODES */
+.brain-node{
+  position:absolute;
+  transform:translate(-50%,-50%);
+  cursor:pointer;
+  text-align:center;
+}
+
+.brain-node .dot{
+  width:16px;
+  height:16px;
+  background:#2563eb;
+  border-radius:50%;
+  box-shadow:0 0 0 6px rgba(37,99,235,0.15);
+  transition:.2s;
+}
+
+.brain-node .label{
+  font-size:0.75rem;
+  margin-top:6px;
+  background:white;
+  padding:3px 8px;
+  border-radius:8px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
+.brain-node:hover .dot{
+  transform:scale(1.2);
+  background:#1d4ed8;
+}
+
+.brain-node.active .dot{
+  background:#ef4444;
+  box-shadow:0 0 0 8px rgba(239,68,68,0.2);
+}
+
+/* TOOLTIP */
+.tooltip-brain{
+  position:absolute;
+  background:#0f172a;
+  color:white;
+  padding:6px 10px;
+  border-radius:6px;
+  font-size:0.7rem;
+  pointer-events:none;
+  opacity:0;
+  transition:.2s;
+}
+
+/* TAG */
+.tag{
+  padding:4px 10px;
+  border-radius:20px;
+  font-size:0.75rem;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container py-4">
+
+<h2>🧠 Mapa da Nossa Mente</h2>
+<p class="text-muted">Entendendo as regiões cerebrais e suas funções no autismo</p>
+
+<div class="row g-4">
+
+<!-- ESQUERDA -->
+<div class="col-lg-3">
+
+<div class="cardx">
+<h5>Regiões do Cérebro</h5>
+
+<div class="region-item" data-id="prefrontal">🔴 Córtex Pré-frontal</div>
+<div class="region-item" data-id="parietal">🟠 Córtex Parietal</div>
+<div class="region-item" data-id="temporal">🔵 Córtex Temporal</div>
+<div class="region-item" data-id="occipital">🟢 Córtex Occipital</div>
+<div class="region-item" data-id="cerebelo">🟣 Cerebelo</div>
+<div class="region-item" data-id="limbico">🟡 Sistema Límbico</div>
+<div class="region-item" data-id="insula">🔷 Ínsula</div>
+</div>
+
+</div>
+
+<!-- CENTRO -->
+<div class="col-lg-6">
+
+<div class="cardx mb-3" style="background:#eef4ff">
+<b>Como interpretar:</b> clique nas regiões ou nos pontos do cérebro
+</div>
+
+<div class="cardx brain-container">
+
+<img src="../assets/img/brain-map.png" class="brain-img">
+
+<!-- NODES -->
+<div class="brain-node" style="top:30%; left:25%" data-id="prefrontal"><div class="dot"></div><div class="label">Pré-frontal</div></div>
+<div class="brain-node" style="top:20%; left:50%" data-id="parietal"><div class="dot"></div><div class="label">Parietal</div></div>
+<div class="brain-node" style="top:55%; left:45%" data-id="temporal"><div class="dot"></div><div class="label">Temporal</div></div>
+<div class="brain-node" style="top:35%; left:75%" data-id="occipital"><div class="dot"></div><div class="label">Occipital</div></div>
+<div class="brain-node" style="top:75%; left:70%" data-id="cerebelo"><div class="dot"></div><div class="label">Cerebelo</div></div>
+<div class="brain-node" style="top:50%; left:40%" data-id="limbico"><div class="dot"></div><div class="label">Límbico</div></div>
+<div class="brain-node" style="top:48%; left:48%" data-id="insula"><div class="dot"></div><div class="label">Ínsula</div></div>
+
+</div>
+
+</div>
+
+<!-- DIREITA -->
+<div class="col-lg-3">
+
+<div class="cardx" id="painel">
+<h5>Região Selecionada</h5>
+<p>Clique em uma região</p>
+</div>
+
+</div>
+
+</div>
+
+<div class="cardx mt-4" style="background:#eef2ff">
+Este mapa é educativo e não substitui avaliação profissional.
+</div>
+
+</div>
+
+<script>
+
+// BASE
+const regioes = {
+prefrontal:{titulo:"Córtex Pré-frontal",desc:"Funções executivas",funcoes:["Planejamento","Decisão","Controle","Atenção"],autismo:["Rigidez","Foco intenso"]},
+parietal:{titulo:"Córtex Parietal",desc:"Sensorial",funcoes:["Integração","Espaço"],autismo:["Hipersensibilidade"]},
+temporal:{titulo:"Córtex Temporal",desc:"Linguagem",funcoes:["Audição","Memória"],autismo:["Processamento auditivo diferente"]},
+occipital:{titulo:"Córtex Occipital",desc:"Visão",funcoes:["Reconhecimento visual"],autismo:["Pensamento visual"]},
+cerebelo:{titulo:"Cerebelo",desc:"Coordenação",funcoes:["Equilíbrio"],autismo:["Coordenação diferente"]},
+limbico:{titulo:"Sistema Límbico",desc:"Emoções",funcoes:["Regulação"],autismo:["Intensidade emocional"]},
+insula:{titulo:"Ínsula",desc:"Consciência",funcoes:["Empatia"],autismo:["Percepção interna diferente"]}
+};
+
+// TOOLTIP
+const tooltip = document.createElement("div");
+tooltip.className = "tooltip-brain";
+document.body.appendChild(tooltip);
+
+// SELECT
+function selectRegion(id){
+
+let r = regioes[id];
+
+document.getElementById("painel").innerHTML = `
+<h5>${r.titulo}</h5>
+<p><b>${r.desc}</b></p>
+<hr>
+<b>Funções</b>
+<ul>${r.funcoes.map(f=>`<li>${f}</li>`).join("")}</ul>
+<b>No autismo</b>
+<ul>${r.autismo.map(f=>`<li>${f}</li>`).join("")}</ul>
+`;
+
+// lista
+document.querySelectorAll('.region-item').forEach(el=>{
+el.classList.toggle('region-active', el.dataset.id===id);
+});
+
+// nodes
+document.querySelectorAll('.brain-node').forEach(n=>{
+n.classList.toggle('active', n.dataset.id===id);
+});
+}
+
+// LISTA
+document.querySelectorAll('.region-item').forEach(el=>{
+el.onclick=()=>selectRegion(el.dataset.id);
+});
+
+// NODES
+document.querySelectorAll('.brain-node').forEach(node=>{
+
+let id = node.dataset.id;
+
+node.onclick=()=>selectRegion(id);
+
+node.onmousemove=(e)=>{
+tooltip.style.left=e.pageX+10+"px";
+tooltip.style.top=e.pageY+10+"px";
+tooltip.innerText=regioes[id].titulo;
+tooltip.style.opacity=1;
+};
+
+node.onmouseleave=()=>tooltip.style.opacity=0;
+
+});
+
+</script>
+
+</body>
+</html>

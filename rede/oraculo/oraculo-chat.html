@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ORÁCULO Conversacional</title>
+
+<link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+
+<style>
+body{ background:#f5f7fb; }
+
+.chat{
+  max-width:700px;
+  margin:auto;
+}
+
+.msg{
+  padding:12px;
+  border-radius:12px;
+  margin:8px 0;
+}
+
+.bot{
+  background:#e0e7ff;
+}
+
+.user{
+  background:#2563eb;
+  color:#fff;
+  text-align:right;
+}
+
+.input-area{
+  display:flex;
+  gap:8px;
+  margin-top:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="chat mt-4">
+
+<h3>🔮 ORÁCULO</h3>
+
+<div id="chat"></div>
+
+<div class="input-area">
+<input id="input" class="form-control" placeholder="Digite sua resposta...">
+<button class="btn btn-primary" onclick="send()">Enviar</button>
+</div>
+
+</div>
+
+<script>
+
+/* =====================
+🧠 ENGINE
+===================== */
+
+const ENGINE = {
+
+detectarEixos(txt){
+
+  txt = txt.toLowerCase();
+  const eixos = [];
+
+  if(txt.includes("barulho") || txt.includes("cheio")){
+    eixos.push("ambiental");
+  }
+
+  if(txt.includes("família") || txt.includes("mãe")){
+    eixos.push("familiar");
+  }
+
+  if(txt.includes("ansiedade") || txt.includes("medo")){
+    eixos.push("terapeutico");
+  }
+
+  return [...new Set(eixos)];
+}
+
+};
+
+/* =====================
+🧠 CORE
+===================== */
+
+const STATE = {
+  step:0,
+  respostas:[],
+  blocos:{}
+};
+
+const FLOW = [
+  "Me conte o que está acontecendo.",
+  "Esse contexto tem algo que pode gerar sobrecarga?",
+  "Como a pessoa costuma reagir nessas situações?",
+  "Quer estruturar um plano com base nisso?"
+];
+
+/* =====================
+💬 CHAT
+===================== */
+
+function addMsg(txt,type="bot"){
+  const div=document.createElement("div");
+  div.className="msg "+type;
+  div.innerText=txt;
+  document.getElementById("chat").appendChild(div);
+  window.scrollTo(0,document.body.scrollHeight);
+}
+
+function send(){
+
+  const input=document.getElementById("input");
+  const txt=input.value;
+
+  if(!txt) return;
+
+  addMsg(txt,"user");
+  STATE.respostas.push(txt);
+
+  process(txt);
+
+  input.value="";
+}
+
+/* =====================
+🧠 PROCESSAMENTO
+===================== */
+
+function process(txt){
+
+  if(STATE.step===0){
+    addMsg(FLOW[1]);
+  }
+
+  if(STATE.step===1){
+    const eixos=ENGINE.detectarEixos(txt);
+
+    eixos.forEach(e=>{
+      STATE.blocos[e]={ observar:"", ajustar:"", evitar:"" };
+    });
+
+    addMsg("Percebo alguns eixos relevantes: "+eixos.join(", "));
+    addMsg(FLOW[2]);
+  }
+
+  if(STATE.step===2){
+    addMsg("Vamos estruturar estratégias.");
+    gerarSugestao();
+  }
+
+  if(STATE.step===3){
+    gerarPlano();
+  }
+
+  STATE.step++;
+}
+
+/* =====================
+🧩 SUGESTÕES
+===================== */
+
+function gerarSugestao(){
+
+  Object.keys(STATE.blocos).forEach(e=>{
+    STATE.blocos[e]={
+      observar:"monitorar sinais",
+      ajustar:"organizar contexto",
+      evitar:"sobrecarga"
+    };
+  });
+
+  addMsg("Estruturei uma base inicial. Podemos ajustar depois.");
+  addMsg(FLOW[3]);
+}
+
+/* =====================
+📄 PLANO
+===================== */
+
+function gerarPlano(){
+
+  let txt="PLANO PROGRAMÁTICO\n\n";
+
+  Object.entries(STATE.blocos).forEach(([k,v])=>{
+    txt+=k.toUpperCase()+"\n";
+    txt+="Observar: "+v.observar+"\n";
+    txt+="Ajustar: "+v.ajustar+"\n";
+    txt+="Evitar: "+v.evitar+"\n\n";
+  });
+
+  addMsg(txt);
+}
+
+/* INIT */
+addMsg(FLOW[0]);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+/* ===================================================
+   HERO SECTION - LOJINHA DOS AUTISTAS
+   =================================================== */
+
+/* Estrutura Base */
+
+.hero {
+  position: relative;
+  min-height: 75vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/* Overlay escuro */
+
+.hero::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.45),
+    rgba(0, 0, 0, 0.60)
+  );
+  
+  background-size: cover;      /* ocupa toda a área */
+  background-position: center; /* centraliza */
+  background-repeat: no-repeat;/* impede repetição */
+
+  width: 100%;
+  height: 100%;
+   
+  z-index: -2;
+}
+
+/* Conteúdo acima da imagem */
+
+.hero .container,
+.hero .container-fluid,
+.hero .row {
+  position: relative;
+  z-index: 2;
+}
+
+/* Texto */
+
+.hero h1,
+.hero h2,
+.hero h3 {
+  color: #ffffff;
+}
+
+.hero p {
+  color: rgba(255,255,255,.92);
+}
+
+/* ===================================================
+   HOME
+   =================================================== */
+
+.page-home .page-title {
+  background-image:
+    url("../img/heroes/home.webp");
+}
+
+/* ===================================================
+   BLOG
+   =================================================== */
+
+.page-blog .page-title {
+  background-image:
+    url("../img/hero-blog.jpg");
+}
+
+/* ===================================================
+   LIVRARIA
+   =================================================== */
+
+.page-livraria .page-title {
+  background-image:
+    url("../img/heroes/livraria.webp");
+}
+
+/* ===================================================
+   JOGOS
+   =================================================== */
+
+.page-jogos .page-title {
+  background-image:
+    url("../img/heroes/jogos.webp");
+}
+
+/* ===================================================
+   CURSOS
+   =================================================== */
+
+.page-cursos .page-title {
+  background-image:
+    url("../img/heroes/cursos.webp");
+}
+
+/* ===================================================
+   EVENTOS
+   =================================================== */
+
+.page-eventos .page-title {
+  background-image:
+    url("../img/hero-eixos.jpg");
+}
+
+/* ===================================================
+   EFEITO PARALLAX (DESKTOP)
+   =================================================== */
+
+@media (min-width: 992px) {
+
+  .hero {
+    background-attachment: fixed;
+  }
+
+}
+
+/* ===================================================
+   RESPONSIVO
+   =================================================== */
+
+@media (max-width: 768px) {
+
+  .hero {
+    min-height: 60vh;
+    background-attachment: scroll;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+}

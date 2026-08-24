@@ -1,0 +1,219 @@
+
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema REDE | Artefatos do Sistema</title>
+  
+  <!-- Favicons -->
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  
+  <!-- Bootstrap + Icons -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/hub.css">
+  
+</head>
+
+<body>
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="brand">Sistema REDE <a href="hub.html" class="active"><i class="bi bi-forward-fill"></i> Visão Geral</a></div>
+    <div class="actions">
+      <span id="userEmail" style="margin-left: 15px; color: var(--primary); font-weight: 500; font-style: italic; font-size: 0.9rem;">Carregando...</span>
+      <a href="#" id="logoutBtn">Sair</a>
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h6>Dashboard</h6>
+    <a href="hub.html"><i class="bi bi-grid"></i> Visão Geral</a>
+
+    <h6>Conteúdo</h6>
+    <a href="documentos.html"><i class="bi bi-journal-text"></i> Documentos Técnicos</a>
+    <a href="calendario-2026.html"><i class="bi bi-calendar4-week"></i> Calendário 2026</a>
+
+    <h6>Artefatos do Sistema</h6>
+    <a href="#" class="active"><i class="bi bi-journal-text"></i> Arquitetura e Modelagem</a>
+    <a href="estrutura-conceitual.html"><i class="bi bi-calendar4-week"></i> Estrutura conceitual</a>
+
+    <h6>Ferramentas</h6>
+    <a href="lucas.html"><i class="bi bi-shield-lock"></i> LUCAS - Agente de IA</a>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="page-title mb-4">
+      <h1>Arquitetura e Modelagem do Sistema REDE</h1>
+      <p>As diretrizes de design, arquitetura, modelagem de dados e estruturação em camadas buscam garantir: funcionalidade, segurança e interoperabilidade ao Sistema REDE, oferecendo interfaces web modernas, processamento eficiente de dados, armazenamento rastreável e integração com serviços externos.</p>
+    </div>
+
+    <!-- MODULES -->
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="module-card">
+          <i class="bi bi-ui-checks"></i>
+          <h3>Arquitetura</h3>
+          <p>O Sistema REDE foi concebido para integrar informação, processos e instrumentos pedagógico-terapêuticos em um ambiente digital seguro, flexível e escalável. <br><br>
+            Sua arquitetura tecnológica e modelagem de dados garantem eficiência operacional, rastreabilidade das ações e suporte à tomada de decisão baseada em evidências.<br><br>
+            O banco de dados que alimenta o Sistema é composto por 3 módulos independentes e integráveis, que juntos oferecem uma visão completa com foco em comportamento, rotina e bem-estar: <br><br>
+            <b>🏠 Módulo MAD - Monitoramento de Atividades Domésticas</b> <br>
+            <b>🌎 Módulo MAP - Monitoramento de Atividades Programáticas</b> <br>
+            <b>⚠️ Módulo RAI - Rastreio de Ações Indesejadas</b><br><br>
+            Cada módulo é independente, mas interconectado, possibilitando acesso rápido a dados relevantes e promovendo a colaboração entre diferentes áreas. </p>
+         <!-- <a href="#">Mais sobre Estrutura Conceitual →</a> -->
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="module-card">
+          <i class="bi bi-stack"></i>
+          <h3>Estruturação por Camadas</h3>
+          <p>O Sistema REDE combina camadas estruturadas de informação com módulos funcionais especializados, permitindo a organização de Relatórios, Dossiês e Planos Programáticos de forma integrada. <br><br>
+            O Sistema é estruturado com base nas seguintes camadas:<br><br>
+            <b>Camada de Apresentação (Front-End)</b>: Interfaces intuitivas e responsivas, desenvolvidas para web, que facilitam a navegação, consulta e análise de informações, garantindo experiência de usuário consistente em diversos dispositivos.<br>
+            <b>Camada de Aplicação (Back-End)</b>: Núcleo lógico do sistema, responsável pelo processamento de dados, execução de regras de negócio e integração entre módulos, mantendo segurança e desempenho.<br>
+            <b>Camada de Dados (Database/Storage)</b>: Armazenamento estruturado de informações e documentos, permitindo consultas rápidas, histórico de ações e rastreabilidade completa de cada registro.<br>
+            <b>Camada de Integração e APIs</b>: Possibilita a comunicação com serviços externos, como Google Drive, Firebase e outras ferramentas, ampliando a flexibilidade e interoperabilidade do sistema.</p>
+         <!-- <a href="#">Acessar nossa Wiki →</a> -->
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="module-card">
+          <i class="bi bi-server"></i>
+          <h3>Modelagem de Dados</h3>
+          <p>A modelagem do Sistema REDE segue princípios de <b>normalização, hierarquia e categorização de documentos</b>:<br><br>
+            <b>Relatórios</b>: registros analíticos e situacionais.<br>
+            <b>Dossiês</b>: coleções temáticas que agregam informações de múltiplas fontes.<br>
+            <b>Planos Programáticos</b>: documentos estratégicos com diretrizes, metas e cronogramas.<br><br>
+          Cada registro possui metadados detalhados, facilitando filtragem, classificação e visualização contextualizada. Este tipo de modelagem organiza dados e documentos com foco em garantir: consistência, facilidade de acesso, otimizar classificação e consulta de documentos - promovendo gestão eficiente da informação.
+          </p>
+         <!-- <a href="#">Consultar referencial bibliográfico →</a> -->
+        </div>
+      </div>
+     
+    </div>
+   
+  </main>
+
+  <!-- JS -->
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="js/hub.js"></script>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+  <script>
+    // Configuração do Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyC3jisbwoN9p0GJzAzfld3Y2l25ZtqIrEg",
+      authDomain: "sistema-rede.firebaseapp.com",
+      projectId: "sistema-rede",
+      storageBucket: "sistema-rede.firebasestorage.app",
+      messagingSenderId: "930399212687",
+      appId: "1:930399212687:web:a89c0d73be4b9fbd488cfa"
+    };
+
+    // Inicializa o Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    const emailSpan = document.getElementById("userEmail");
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    // Observa mudanças de autenticação
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        emailSpan.textContent = user.email;
+      } else {
+        emailSpan.textContent = "Usuário não logado";
+      }
+    });
+
+    // Logout
+    logoutBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      firebase.auth().signOut().then(() => {
+        window.location.href = "../index.html";
+      });
+    });
+  </script>
+
+<!-- Script de Filtro -->
+<script>
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const items = document.querySelectorAll('#docsGrid .portfolio-item');
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // ativa botão
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.filter;
+
+      items.forEach(item => {
+        if (filter === 'all' || item.classList.contains(`filter-${filter}`)) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
+<!--
+<script>
+  const filterButtons = document.querySelectorAll('.filter-btn');
+const carouselInner = document.querySelector('#docsCarousel .carousel-inner');
+const carousel = bootstrap.Carousel.getOrCreateInstance(document.getElementById('docsCarousel'));
+
+filterButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    // Atualiza UI do botão
+    filterButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const filter = btn.dataset.filter;
+    const cards = carouselInner.querySelectorAll('.module-card');
+
+    let firstVisible = null;
+
+    cards.forEach(card => {
+      if (filter === 'all' || card.dataset.type.includes(filter)) {
+        card.style.display = 'block';
+        if (!firstVisible) firstVisible = card;
+      } else {
+        card.style.display = 'none';
+      }
+      card.classList.remove('active'); // remove active do card
+    });
+
+    // Garante que o primeiro card visível seja "ativo"
+    if (firstVisible) {
+      firstVisible.classList.add('active');
+    }
+
+    // Reinicia o carousel no primeiro card visível
+    carousel.to(0);
+  });
+});
+</script>-->
+
+  
+</body>
+</html>

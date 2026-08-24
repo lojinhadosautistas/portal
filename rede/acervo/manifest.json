@@ -1,0 +1,116 @@
+{
+  "documents": [
+    {
+      "id": "dossie-calendario-2026",
+      "title": "Dossiê Calendário 2026",
+      "path": "acervo/fragments/frag-dossie-calendario-2026.html",
+      "tags": [
+       "economia da atenção",
+       "calendário 2026",
+       "aniversários",
+       "regulação emocional",
+       "autonomia funcional",
+       "evento estruturante",
+       "alta carga afetiva",
+       "indicadores longitudinais",
+       "neurodiversidade",
+       "mediação",
+       "organização ambiental",
+       "previsibilidade",
+       "hiperconcentração atencional"
+  ],
+  "connections": ["rt-carnaval-2026", "dossie-ferias-2025-2026"]
+},    
+    {
+      "id": "dossie-ferias-2025-2026",
+      "title": "Dossiê Férias 2025-2026",
+      "path": "acervo/fragments/frag-dossie-ferias-2025-2026.html",
+      "tags": [
+       "ferias",
+       "dossie",
+       "clinico-familiar",
+       "regulacao emocional",
+       "vinculos familiares",
+       "Priscila", "irmã",
+       "eventos sociais",
+       "responsabilidades domesticas",
+       "autonomia",
+       "cinema na varanda",
+       "ansiedade antecipatoria",
+       "previsibilidade",
+       "hiperfoco",
+       "natal",
+       "carnaval",
+       "viagem Nina"
+  ],
+  "connections": [
+    "rt-carnaval-2026",
+    "rt-natal-2025"]
+},    
+    {
+  "id": "rt-carnaval-2026",
+  "title": "RT — Carnaval 2026",
+  "path": "acervo/fragments/frag-rt-carnaval-2026.html",
+  "tags": [
+    "trigger",
+    "ansiedade antecipatória",
+    "Carnaval 2026",
+    "sobrecarga sensorial",
+    "disputa simbólica de local",
+    "controle ambiental",
+    "previsibilidade",
+    "regulação emocional",
+    "atividades-âncoras",
+    "mediação familiar",
+    "ambientes de regulação",
+    "aprendizagem emocional assistida",
+    "flexibilidade cognitiva",
+    "viagem Nina"
+  ],
+  "connections": ["dossie-ferias-2025-2026", "dossie-calendario-2026"]
+},
+    {
+  "id": "rt-natal-2025",
+  "title": "RT — Natal 2025",
+  "path": "acervo/fragments/frag-rt-natal-2025.html",
+  "tags": [
+    "trigger",
+    "ansiedade antecipatória",
+    "hiperfoco",
+    "Natal",
+    "símbolos natalinos",
+    "músicas natalinas",
+    "rituais familiares",
+    "previsibilidade",
+    "regulação emocional",
+    "musicoterapia",
+    "arteterapia",
+    "eventos simbólicos",
+    "sobrecarga sensorial",
+    "mediação familiar"
+  ],
+  "connections": ["dossie-ferias-2025-2026"]
+},  
+    {
+  "id": "ra-niver-rafael-2025",
+  "title": "RA — Aniversário de Rafael 2025",
+  "path": "acervo/fragments/frag-ra-niver-rafael-2025.html",
+  "tags": [
+    "hiperfoco afetivo", "fest joy",
+    "aniversário", "rafael", "enio", "tathi",
+    "saudade",
+    "ausência física",
+    "rigidez cognitiva",
+    "ansiedade antecipatória",
+    "frustração emocional",
+    "mediação familiar",
+    "substituição simbólica",
+    "regulação emocional",
+    "escalada comportamental",
+    "evento significativo"
+  ],
+  "connections": ["dossie-calendario-2026"]
+}
+    
+  ]
+}

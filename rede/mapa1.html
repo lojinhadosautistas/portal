@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Mapa do Autismo no Brasil | Lojinha dos Autistas</title>
+
+<meta name="description" content="Mapa interativo e observatório com dados do Censo 2022 sobre autismo no Brasil."/>
+
+<link href="../assets/img/favicon.png" rel="icon">
+
+<!-- HUB -->
+<link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/css/hub.css">
+
+<!-- Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+#map{height:520px;border-radius:12px;}
+
+.cardx{
+  background:#fff;
+  border-radius:12px;
+  padding:16px;
+  box-shadow:0 4px 12px rgba(0,0,0,.05);
+}
+
+.section{margin-top:25px;}
+
+.rank-bar{
+  height:6px;
+  background:#e5e7eb;
+  border-radius:6px;
+  margin-bottom:10px;
+}
+
+.rank-fill{
+  height:6px;
+  background:#2563eb;
+}
+
+.kpi{
+  font-size:1.4rem;
+  font-weight:600;
+}
+
+.icon{
+  margin-right:6px;
+  color:#2563eb;
+}
+
+/* PRINT */
+@media print{
+  #header-container, #sidebar-container, .btn-print{display:none;}
+  #map{height:400px;}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="header-container"></div>
+<div id="sidebar-container"></div>
+
+<main class="main">
+<div class="container py-4">
+
+<h1>Mapa do Autismo no Brasil</h1>
+<p>Baseado no Censo 2022 (IBGE)</p>
+
+<!-- KPIs -->
+<div class="section row g-3">
+
+<div class="col">
+<div class="cardx text-center">
+<div class="kpi">2,4M</div>
+<small><i class="bi bi-people icon"></i>Pessoas</small>
+</div>
+</div>
+
+<div class="col">
+<div class="cardx text-center">
+<div class="kpi">1,2%</div>
+<small><i class="bi bi-graph-up icon"></i>Prevalência</small>
+</div>
+</div>
+
+<div class="col">
+<div class="cardx text-center">
+<div class="kpi">760 mil</div>
+<small><i class="bi bi-mortarboard icon"></i>Estudantes</small>
+</div>
+</div>
+
+<div class="col">
+<div class="cardx text-center">
+<div class="kpi">66,8%</div>
+<small><i class="bi bi-book icon"></i>Ensino fundamental</small>
+</div>
+</div>
+
+</div>
+
+<!-- ESTADO (AGORA EM CIMA) -->
+<div class="section cardx">
+<h5><i class="bi bi-geo-alt icon"></i>Estado selecionado</h5>
+<div id="info">Clique em um estado no mapa</div>
+</div>
+
+<div class="section row g-4">
+
+<!-- MAPA -->
+<div class="col-lg-8">
+
+<div id="map"></div>
+
+<div class="section cardx">
+<h5><i class="bi bi-bar-chart icon"></i>Distribuição por Região</h5>
+
+<div><b>Sudeste</b></div>
+<div class="rank-bar"><div class="rank-fill" style="width:100%"></div></div>
+
+<div><b>Nordeste</b></div>
+<div class="rank-bar"><div class="rank-fill" style="width:63%"></div></div>
+
+<div><b>Sul</b></div>
+<div class="rank-bar"><div class="rank-fill" style="width:35%"></div></div>
+
+<div><b>Norte</b></div>
+<div class="rank-bar"><div class="rank-fill" style="width:20%"></div></div>
+
+<div><b>Centro-Oeste</b></div>
+<div class="rank-bar"><div class="rank-fill" style="width:18%"></div></div>
+
+</div>
+
+</div>
+
+<!-- LADO DIREITO -->
+<div class="col-lg-4">
+
+<div class="cardx mb-3">
+<h5><i class="bi bi-pie-chart icon"></i>Distribuição etária</h5>
+<canvas id="chart"></canvas>
+</div>
+
+<div class="cardx">
+<h5><i class="bi bi-trophy icon"></i>Ranking</h5>
+<small class="text-muted">Base IBGE</small>
+<div id="ranking"></div>
+</div>
+
+</div>
+
+</div>
+
+<!-- OBSERVATÓRIO -->
+<div class="section cardx">
+<h5><i class="bi bi-cpu icon"></i>Leitura do Território</h5>
+<p id="leituraTexto">Selecione um estado para análise.</p>
+</div>
+
+<div class="section cardx">
+<h5><i class="bi bi-lightbulb icon"></i>Insights</h5>
+<ul id="insights"></ul>
+</div>
+
+<div class="section cardx">
+<h5><i class="bi bi-activity icon"></i>Implicações</h5>
+<ul id="implicacoes"></ul>
+</div>
+
+<!-- BOTÃO FINAL -->
+<div class="section text-center">
+<button class="btn btn-primary btn-print" onclick="window.print()">
+<i class="bi bi-printer"></i> Gerar relatório
+</button>
+</div>
+
+</div>
+</main>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+
+var map = L.map('map').setView([-14.2,-51.9],4);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+var dados={
+"SP":{pop:500000},
+"MG":{pop:250000},
+"RJ":{pop:200000},
+"BA":{pop:180000},
+"PR":{pop:140000},
+"RS":{pop:130000},
+"CE":{pop:120000},
+"SC":{pop:80000},
+"AM":{pop:60000},
+"DF":{pop:50000}
+};
+
+function getColor(v){
+return v>400000?"#08306b":
+v>200000?"#2171b5":
+v>100000?"#4292c6":
+v>50000?"#6baed6":"#9ecae1";
+}
+
+function style(f){
+let d=dados[f.properties.sigla];
+return{
+fillColor:d?getColor(d.pop):"#eee",
+weight:1,color:"#fff",fillOpacity:0.8
+};
+}
+
+let chart;
+
+function updatePanel(uf,nome){
+
+let d=dados[uf];
+
+document.getElementById("info").innerHTML=`
+<b>${nome}</b><br>
+<i class="bi bi-people"></i> ${d?d.pop.toLocaleString()+" pessoas":"Sem dados"}
+`;
+
+document.getElementById("leituraTexto").innerText =
+`${nome} apresenta distribuição alinhada ao padrão nacional.`
+
+document.getElementById("insights").innerHTML=`
+<li>Maior concentração em idade escolar</li>
+<li>Distribuição proporcional à população</li>
+`
+
+document.getElementById("implicacoes").innerHTML=`
+<li>Necessidade de suporte educacional</li>
+<li>Planejamento de serviços locais</li>
+`
+
+if(chart)chart.destroy();
+
+chart=new Chart(document.getElementById('chart'),{
+type:'bar',
+data:{
+labels:["0-4","5-9","10-14","Adultos"],
+datasets:[{data:[2.1,2.6,1.9,0.9]}]
+}
+});
+
+}
+
+// ranking
+let arr=Object.entries(dados).sort((a,b)=>b[1].pop-a[1].pop);
+let html="";
+arr.forEach(([uf,d])=>{
+html+=`<div><b>${uf}</b> (${d.pop.toLocaleString()})</div>
+<div class="rank-bar"><div class="rank-fill" style="width:${d.pop/5000}%"></div></div>`;
+});
+document.getElementById("ranking").innerHTML=html;
+
+// geojson
+fetch("https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/brazil-states.geojson")
+.then(r=>r.json())
+.then(data=>{
+L.geoJson(data,{
+style:style,
+onEachFeature:(f,l)=>{
+l.on('click',()=>updatePanel(f.properties.sigla,f.properties.nome));
+}
+}).addTo(map);
+});
+
+</script>
+
+<script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="js/components.js"></script>
+
+</body>
+</html>
